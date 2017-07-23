@@ -1,0 +1,37 @@
+{
+  "content_scripts": [
+    {
+      "js": [
+        "jQuery.js",
+        "inject.js"
+      ],
+      "matches": [
+        "*://*.twitch.tv/*"
+      ],
+      "exclude_globs": [
+        "https://www.twitch.tv/directory/*",
+        "https://www.twitch.tv/p/*",
+        "https://www.twitch.tv/products/*",
+        "https://www.twitch.tv/*/manager*",
+        "https://www.twitch.tv/*/dashboard",
+        "https://www.twitch.tv/broadcast",
+        "https://www.twitch.tv/messages/*",
+        "https://www.twitch.tv/settings"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "description": "Block user even if moderator.",
+  "icons": {
+    "128": "icon128.png",
+    "48": "icon48.png",
+    "16": "icon16.png"
+  },
+  "manifest_version": 2,
+  "name": "Twitch Blocker",
+  "permissions": [
+    "*://*.twitch.tv/*",
+    "tabs"
+  ],
+  "version": "0.2"
+}
