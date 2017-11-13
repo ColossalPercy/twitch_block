@@ -3,6 +3,8 @@
     {
       "js": [
         "jQuery.js",
+        "inject-beta.js",
+        "inject-legacy.js",
         "inject.js"
       ],
       "matches": [
@@ -30,8 +32,7 @@
   "manifest_version": 2,
   "name": "Twitch Blocker",
   "permissions": [
-    "*://*.twitch.tv/*",
-    "tabs"
+    "*://*.twitch.tv/*"
   ],
-  "version": "0.2"
+  "version": "0.4"
 }
