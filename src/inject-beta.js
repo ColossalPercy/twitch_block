@@ -59,6 +59,9 @@ function betaSite() {
                 localStorage.setItem('twitchBlockList', blockList);
             }
         });
+        for (i = 0; i < blockList.length; i++) {
+            blockList[i] = blockList[i].toLowerCase();
+        }
     } else {
         blockList = [];
         localStorage.setItem('twitchBlockList', blockList);
@@ -89,6 +92,9 @@ function betaSite() {
                 if (typeof from == 'object') {
                     var twitchID = from.innerHTML.toLowerCase();
                     isBlocked(twitchID, $(addedNode));
+                    if ($('#block-settings-button').length === 0) {
+                        buttonsLoaded.observe($("body")[0], config);
+                    }
                 }
             });
         });
@@ -139,7 +145,7 @@ function betaSite() {
         var newUser = prompt("Add a new user to the block list:").toLowerCase();
         if (newUser !== null) {
             blockList.push(newUser);
-            $('#block-user-list').append('<div class="mg-t-1"><button id="blocked-user-'+newUser+'">'+newUser+'</button></div>');
+            $('#block-user-list').append('<div class="mg-t-1"><button id="blocked-user-' + newUser + '">' + newUser + '</button></div>');
             document.getElementById('blocked-user-' + newUser).addEventListener('click', removeUser);
             localStorage.setItem('twitchBlockList', blockList);
             console.log('Added ' + newUser + ' to the block list.');
