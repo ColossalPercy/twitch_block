@@ -49,6 +49,9 @@ function legacySite() {
                 localStorage.setItem('twitchBlockList', blockList);
             }
         });
+        for (i = 0; i < blockList.length; i++) {
+            blockList[i] = blockList[i].toLowerCase();
+        }
     } else {
         blockList = [];
         localStorage.setItem('twitchBlockList', blockList);
@@ -78,7 +81,7 @@ function legacySite() {
             mutation.addedNodes.forEach(function(addedNode) {
                 var from = $(addedNode).find('.from')[0];
                 if (typeof from == 'object') {
-                    var twitchID = from.innerHTML;
+                    var twitchID = from.innerHTML.toLowerCase();
                     isBlocked(twitchID, $(addedNode));
                     if ($('#blockEdit').length === 0) {
                         buttonsLoaded.observe($("body")[0], config);
@@ -129,7 +132,7 @@ function legacySite() {
     }
 
     function addBlockedUser() {
-        var newUser = prompt("Add a new user to the block list (case sensitive):");
+        var newUser = prompt("Add a new user to the block list:").toLowerCase();
         if (newUser !== null) {
             blockList.push(newUser);
             $('#blocked-users-container').append('<p><button id="blocked-user-' + newUser + '">' + newUser + '</button></p>');

@@ -88,13 +88,13 @@ function betaSite() {
     var chatObserver = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
             mutation.addedNodes.forEach(function(addedNode) {
+                if ($('#block-settings-button').length === 0) {
+                    buttonsLoaded.observe($("body")[0], config);
+                }
                 var from = $(addedNode).find('.chat-author__display-name')[0];
                 if (typeof from == 'object') {
                     var twitchID = from.innerHTML.toLowerCase();
                     isBlocked(twitchID, $(addedNode));
-                    if ($('#block-settings-button').length === 0) {
-                        buttonsLoaded.observe($("body")[0], config);
-                    }
                 }
             });
         });
