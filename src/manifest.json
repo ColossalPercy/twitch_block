@@ -3,9 +3,7 @@
     {
       "js": [
         "jQuery.js",
-        "inject-beta.js",
-        "inject-legacy.js",
-        "inject.js"
+        "inject-beta.js"
       ],
       "matches": [
         "*://*.twitch.tv/*"
@@ -24,5 +22,5 @@
   "permissions": [
     "*://*.twitch.tv/*"
   ],
-  "version": "0.5"
+  "version": "0.6"
 }

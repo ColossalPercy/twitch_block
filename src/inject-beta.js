@@ -1,6 +1,6 @@
 /*jshint esversion: 6 */
 
-function betaSite() {
+/*function betaSite() {*/
 
     var config = {
         attributes: false,
@@ -72,7 +72,7 @@ function betaSite() {
     //MutationObserver for buttons loaded
     var buttonsLoaded = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
-            var chatSelector = $('.chat-buttons-container');
+            var chatSelector = $('.chat-input__buttons-container');
             if (chatSelector.length > 0) {
                 buttonsLoaded.disconnect();
                 loaded = true;
@@ -122,7 +122,7 @@ function betaSite() {
     }
 
     function addButton() {
-        $('.chat-buttons-container > .flex-row').append(htmlStruc);
+        $('.chat-input__buttons-container > .flex-row').append(htmlStruc);
         document.getElementById('block-settings-button').addEventListener('click', blockSettingsShow);
 
         blockList.forEach(function(id) {
@@ -164,4 +164,4 @@ function betaSite() {
             $(event.target).parent().remove();
         }
     }
-}
+/*}*/
