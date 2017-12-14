@@ -1,6 +1,6 @@
 /*jshint esversion: 6 */
 
-/*function betaSite() {*/
+function betaSite() {
 
     var config = {
         attributes: false,
@@ -10,32 +10,32 @@
     };
 
     const htmlStruc = `
-    <div class="relative">
-        <div class="relative">
+    <div class="tw-relative">
+        <div class="tw-relative">
             <div>
                 <button class="tw-button-icon" id="block-settings-button" title="Edit Block List">
                     <span class="tw-button-icon__icon">
-                        <figure class="svg-figure">
-                            <svg class="svg svg--inherit" height="16" viewbox="0 0 16 16" width="16">
+                        <figure class="tw-svg">
+                            <svg class="tw-svg__asset tw-svg__asset--inherit" height="16" viewbox="0 0 16 16" width="16">
                                 <path d="M8,1C4.13,1,1,4.13,1,8s3.13,7,7,7s7-3.13,7-7S11.87,1,8,1z M3,8c0-2.76,2.24-5,5-5 c1.02,0,1.97,0.31,2.76,0.83l-6.93,6.93C3.31,9.97,3,9.02,3,8z M8,13c-1.02,0-1.97-0.31-2.76-0.83l6.93-6.93 C12.69,6.03,13,6.98,13,8C13,10.76,10.76,13,8,13z"></path>
                             </svg>
                         </figure>
                     </span>
                 </button>
             </div>
-            <div class="tw-balloon tw-balloon--up" id="block-settings" style="margin-bottom:11px">
+            <div class="tw-balloon tw-balloon--up tw-hide tw-absolute" id="block-settings" style="margin-bottom:11px">
                 <div class="scrollable-area" data-simplebar="init">
                     <div>
-                        <div class="chat-settings c-background c-text  pd-2">
-                            <div class="c-background c-text full-width inline-flex flex-column">
-                                <p class="c-text-alt-2 upcase">Blocked Users</p>
+                        <div class="chat-settings tw-c-background tw-c-text tw-pd-2">
+                            <div class="tw-c-background tw-c-text tw-full-width tw-inline-flex tw-flex-column">
+                                <p class="tw-c-text-alt-2 tw-upcase">Blocked Users</p>
                             </div>
-                            <div class="border-t mg-b-1 mg-t-1" id="block-user-list"></div>
-                            <div class="border-t mg-b-1 mg-t-1 pd-t-1">
+                            <div class="tw-border-t tw-mg-b-1 tw-mg-t-1" id="block-user-list"></div>
+                            <div class="tw-border-t tw-mg-b-1 tw-mg-t-1 tw-pd-t-1">
                                 <p>Click username above to unblock!</p>
                             </div>
-                            <div class="border-t">
-                                <div class="mg-b-1 mg-t-1">
+                            <div class="tw-border-t">
+                                <div class="tw-mg-b-1 tw-mg-t-1">
                                     <button class="tw-button" id="block-add-user">
                                         <span class="tw-button__icon">Block New User</span>
                                     </button>
@@ -94,6 +94,7 @@
                 var from = $(addedNode).find('.chat-author__display-name')[0];
                 if (typeof from == 'object') {
                     var twitchID = from.innerHTML.toLowerCase();
+                    twitchID = twitchID.replace(/<!--(.*?)-->/gm, "");
                     isBlocked(twitchID, $(addedNode));
                 }
             });
@@ -122,12 +123,12 @@
     }
 
     function addButton() {
-        $('.chat-input__buttons-container > .flex-row').append(htmlStruc);
+        $('.chat-input__buttons-container > .tw-flex-row').append(htmlStruc);
         document.getElementById('block-settings-button').addEventListener('click', blockSettingsShow);
 
         blockList.forEach(function(id) {
             var user = `
-            <div class="mg-t-1" >
+            <div class="tw-mg-t-1" >
                 <button id="blocked-user-${id}">${id}</button>
             </div>
             `;
@@ -138,14 +139,14 @@
     }
 
     function blockSettingsShow() {
-        $('#block-settings').toggleClass('block');
+        $('#block-settings').toggleClass('tw-hide tw-block');
     }
 
     function addUser() {
         var newUser = prompt("Add a new user to the block list:").toLowerCase();
         if (newUser !== null) {
             blockList.push(newUser);
-            $('#block-user-list').append('<div class="mg-t-1"><button id="blocked-user-' + newUser + '">' + newUser + '</button></div>');
+            $('#block-user-list').append('<div class="tw-mg-t-1"><button id="blocked-user-' + newUser + '">' + newUser + '</button></div>');
             document.getElementById('blocked-user-' + newUser).addEventListener('click', removeUser);
             localStorage.setItem('twitchBlockList', blockList);
             console.log('Added ' + newUser + ' to the block list.');
@@ -164,4 +165,5 @@
             $(event.target).parent().remove();
         }
     }
-/*}*/
+
+}
