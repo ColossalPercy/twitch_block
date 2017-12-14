@@ -118,7 +118,7 @@ function betaSite() {
 
     function isBlocked(twitchID, node) {
         if (blockList.indexOf(twitchID) !== -1) {
-            node.remove();
+            node.hide();
         }
     }
 
