@@ -94,6 +94,7 @@
                 var from = $(addedNode).find('.chat-author__display-name')[0];
                 if (typeof from == 'object') {
                     var twitchID = from.innerHTML.toLowerCase();
+                    twitchID = twitchID.replace(/<!--(.*?)-->/gm, "");
                     isBlocked(twitchID, $(addedNode));
                 }
             });
