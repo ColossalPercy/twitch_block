@@ -1,4 +1,4 @@
-if (localStorage.getItem('twilight.sessionID')) {
+if (document.querySelector('[data-reactroot], [data-reactid]')) {
     console.log('Beta Site Detected!');
     betaSite();
 } else {
