@@ -113,9 +113,6 @@ function betaSite() {
     });
     chatLoaded.observe($("body")[0], config);
 
-
-
-
     function isBlocked(twitchID, node) {
         if (blockList.indexOf(twitchID) !== -1) {
             node.hide();

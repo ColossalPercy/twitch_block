@@ -1,4 +1,4 @@
-if (document.querySelector('[data-reactroot], [data-reactid]')) {
+if (document.getElementById('root')) {
     console.log('Beta Site Detected!');
     betaSite();
 } else {
